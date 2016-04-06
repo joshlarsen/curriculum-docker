@@ -1,6 +1,6 @@
 title: Docker Tech Demo
 description: Demonstrating the MVP features.
-configurator_class: Configurator::Base
+configurator_class: Configurator::None
 
 sections:
   -
