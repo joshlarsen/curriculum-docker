@@ -1,6 +1,6 @@
 title: Demo
 pre-requisites:
-learning-objective:
+learning-objective: Learn Docker
 screens:
   - image-slide:
       title: "Start the learning container"
