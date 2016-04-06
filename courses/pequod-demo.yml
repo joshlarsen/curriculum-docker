@@ -1,0 +1,10 @@
+title: Docker Tech Demo
+description: Demonstrating the MVP features.
+configurator_class: Configurator::Base
+
+sections:
+  -
+    title: Pinata/Wheelhouse Demo
+    description: Work with a Docker container
+    modules:
+      - PEQUOD-demo

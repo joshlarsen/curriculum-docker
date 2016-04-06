@@ -1,0 +1,65 @@
+title: Demo
+pre-requisites:
+learning-objective:
+screens:
+  - image-slide:
+      title: "Start the learning container"
+      image: blank.png
+      presenter-script: |
+        ## Installing Docker for Mac
+
+        Docker for Mac makes it easy to get started using Docker on your Mac! Simply download and install the app and you will be ready to go.
+
+        On the next few pages, you'll learn more about how to use these features of the application.
+
+
+        Let's start the learning container
+
+        ```
+        docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash
+        ```
+
+        Once the container starts, we you can move on to the next section.
+  - image-slide:
+      title: "Login"
+      image: blank.png
+      presenter-script: |
+        ## Login with your Docker ID
+
+        First we need to log you in with your Docker ID.
+
+        To login with your Docker ID, you'll need to run the following command and follow the prompts for your username and password
+        ```
+        $ docker login
+        ```
+
+        If you don't have a Docker ID, you can get one for free at https://hub.docker.com/.
+  - lab:
+      title: "Exploring the Docker CLI"
+      id: PEQUOD-demo-lab
+      presenter-script:
+      introduction: |
+        We're going to do the following steps inside the learning container.
+      steps:
+        - description: |
+            We can take a look at all of the running containers using the `ps` command for the `docker` CLI
+
+            ```
+            docker ps
+            ```
+          id: PEQUOD-demo-ps
+          verifications:
+            - verification-type: cli-ps
+              id: PEQUOD-demo-ps-verification
+              success-message: "Great job - you listed the running containers."
+              failure-message: "It looks like you haven't committed the change yet."
+        - description: "Run the whalesay container"
+          id: PEQUOD-demo-whalesay
+          verifications:
+            - verification-type: container-start
+              id: PEQUOD-demo-whalesay-verification
+              success-message: "Great job - you started the container."
+              failure-message: "It looks like you haven't started the container yet."
+additional-labs:
+additional-questions:
+resources:
