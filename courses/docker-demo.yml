@@ -7,4 +7,4 @@ sections:
     title: Docker Demo
     description: Using Docker Compose
     modules:
-      - DOCKER-demo
+      - DOCKER-demo-XD
