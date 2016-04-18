@@ -19,7 +19,7 @@ screens:
             In the terminal, type `$ docker run -v ETC` to start up the learning container.
           id: docker-demo-run-learning-container
           verifications:
-            - verification-type: learning-container-running
+            - verification-type: cli-ps
               id: docker-demo-container-running-verification
               success-message: "Great job, we can now see the work you're doing locally. Click above to move on."
               failure-message: "It looks like you haven't gotten the learning container running yet."
@@ -40,7 +40,7 @@ screens:
             Run `docker ps` to see what is running. Unless you've been using docker separately, the only running container should be the learning container you're working in.
           id: docker-demo-ps
           verifications:
-            - verification-type: docker-ps
+            - verification-type: cli-ps
               id: docker-demo-ps-verification
               success-message: "You ran `ps` correctly. Let's run some containers to make it less empty."
               failure-message: "It looks like you haven't run the command yet."
@@ -51,7 +51,7 @@ screens:
             Go ahead and take a peak at the code: you can see it's written in several languages and frameworks. In the top-level directory is a `compose.yml` file. This is the file that tells Docker how to run this code locally. To run the code in a docker container, type `docker-compose up -d` in the directory with the compose file. 
           id: docker-demo-compose-up-lab
           verifications:
-            - verification-type: docker-compose-up
+            - verification-type: dcli-ps
               id: docker-demo-compose-up-lab-verification
               success-message: "Good work, it looks like the code is now running on your computer in a container. Click **next** to move on."
               failure-message: "It looks like you haven't run `docker-compose up -d` yet."
@@ -76,7 +76,7 @@ screens:
             OK, now that your changes are working, you're done running the code locally. You can free up resources on your machine by spinning down the images used to run the code. Run `docker-compose down` to spin them down gracefully.
           id: docker-demo-compose-down-lab
           verifications:
-            - verification-type: docker-compose-down
+            - verification-type: cli-ps
               id: docker-demo-compose-down-lab-verification
               success-message: "Great, all the images have spun down. Run a `docker ps` to check it out yourself. Congrats, you completed the course!"
               failure-message: "It looks like the project is still running."
