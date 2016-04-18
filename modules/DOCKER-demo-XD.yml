@@ -4,27 +4,6 @@ learning-objective: docker-compose up
 screens:
   - lab:
       title: Running a Docker Project
-      id: docker-demo-learning-container
-      presenter-script:
-      introduction: |
-        Docker makes it incredibly fast and easy to get code running on your computer.
-
-        In this course, we'll walk you through the steps of using Docker.
-
-        To start, we'll need to have you run a special "learning contanier" that lets us see what work you're doing on your local computer. This way we can give you feedback and let you know if you've performed any of the stpes incorrectly.
-
-        Follow the instructions below. Once the verification turns green, you can move on and we'll give you feedback on all the steps you perform in the learning container.
-      steps:
-        - description: |
-            In the terminal, type `$ docker run -v ETC` to start up the learning container.
-          id: docker-demo-run-learning-container
-          verifications:
-            - verification-type: cli-ps
-              id: docker-demo-container-running-verification
-              success-message: "Great job, we can now see the work you're doing locally. Click above to move on."
-              failure-message: "It looks like you haven't gotten the learning container running yet."
-  - lab:
-      title: Running a Docker Project
       id: docker-demo-compose-up
       presenter-script:
       introduction: |
@@ -32,7 +11,7 @@ screens:
 
         If you're like me, it's get a good testing environment up and running so that you can begin working on the code.
 
-        Docker lets you do this with only one command, if the code is set up correctly.
+        Docker lets you do this with only one command, if the project is set up correctly.
 
         Lucky for you, we set up a project so you can learn to do just this. Follow the steps below to get up and running with Docker fast.
       steps:
@@ -45,10 +24,14 @@ screens:
               success-message: "You ran `ps` correctly. Let's run some containers to make it less empty."
               failure-message: "It looks like you haven't run the command yet."
         - description: |
-            `cd` into the directory with the code downloaded.
+            We've already downloaded the code and project for you. `cd` into the `/swarm-microservice-demo-v1/` directory.
           id: docker-demo-cd
         - description: |
-            Go ahead and take a peak at the code: you can see it's written in several languages and frameworks. In the top-level directory is a `compose.yml` file. This is the file that tells Docker how to run this code locally. To run the code in a docker container, type `docker-compose up -d` in the directory with the compose file. 
+            Go ahead and take a peak at the code: you can see it's written in several languages and frameworks. In the top-level directory is a `compose.yml` file. This is the file that tells Docker how to run this code locally. 
+
+            To run the code in a docker container, type `docker-compose up -d` in the directory with the compose file. 
+
+            You'll want to make sure to include the `-d` or you won't be able to use your command line while the containers are running!
           id: docker-demo-compose-up-lab
           verifications:
             - verification-type: cli-ps
@@ -70,7 +53,7 @@ screens:
         The way we have our compose file set up, while all the dependencies and code are running in the container, the code itself is still hosted on your local machine (through what's called a mounted volume). That means that you can change the code locally and the container will automatically update with those changes. This makes making changes to the code and testing those changes incredibly fast.
       steps:
         - description: |
-            In the WHATEVER folder, change the `index.html` file. Then refresh your web browser. The change should show up!
+            In the `/swarm-microservice-demo-v1/web-vote/app/templates/` folder, change the `index.html` file. Add some text to the `div` with the `id="hostname"` attribute. Then refresh your web browser. The change should show up!
           id: docker-demo-code-edit
         - description: |
             OK, now that your changes are working, you're done running the code locally. You can free up resources on your machine by spinning down the images used to run the code. Run `docker-compose down` to spin them down gracefully.
@@ -80,9 +63,6 @@ screens:
               id: docker-demo-compose-down-lab-verification
               success-message: "Great, all the images have spun down. Run a `docker ps` to check it out yourself. Congrats, you completed the course!"
               failure-message: "It looks like the project is still running."
-        - description: |
-            Finally, you can share your code with others. If you cloned the repo, commit the code and then push it to the remote.
-          id: docker-demo-git-push
 additional-labs:
 additional-questions:
 resources:
