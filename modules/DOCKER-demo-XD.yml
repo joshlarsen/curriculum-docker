@@ -51,7 +51,7 @@ screens:
             Go ahead and take a peak at the code: you can see it's written in several languages and frameworks. In the top-level directory is a `compose.yml` file. This is the file that tells Docker how to run this code locally. To run the code in a docker container, type `docker-compose up -d` in the directory with the compose file. 
           id: docker-demo-compose-up-lab
           verifications:
-            - verification-type: dcli-ps
+            - verification-type: cli-ps
               id: docker-demo-compose-up-lab-verification
               success-message: "Good work, it looks like the code is now running on your computer in a container. Click **next** to move on."
               failure-message: "It looks like you haven't run `docker-compose up -d` yet."
