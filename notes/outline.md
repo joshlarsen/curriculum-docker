@@ -16,7 +16,6 @@
 * Visit localhost
 * Edit code, see it instantly
 
-
 # Setting up your own project
 
 ## Docker Image
