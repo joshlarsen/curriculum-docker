@@ -11,17 +11,22 @@
 
 ## First Lab: Running Dev Environment
 
-* Download code from GitHub.
-  - Open docker-compose.yaml file and find out the port number where app is running.
-* `docker compose up`
-    - run `$ docker-compose up`
+### Run demo:
+
+### EX1:  
+* Run docker app with docker-compose
+    - go to demo code directory
+    - run `$ docker-compose up -d`
+      - may take some time to run
+      - verified by app
+    - User verify that docker containers are started and running. `$docker ps -a` (add expected output, see 2 containers running elasticsearch and web-app)
 * Run demo application
-    - Visit localhost with port to run app
-    - Run search
+    - From your browser, visit `http://localhost:5000` to see running app
+    - Perform search
 * Edit code, see it instantly by mounting user volume
     - Change CSS in `flask-app/static/styles/mail.css`
-    - Modify Static text in `/Users/inyoungcho/docker/FoodTrucks/flask-app/static/src/components/Intro.js` with Bla-Bla-Blah.
-    - Verify the changes you have made
+    - Modify Static text  `/Users/inyoungcho/docker/FoodTrucks/flask-app/static/src/components/Intro.js` with Bla-Bla-Blah.
+    - Verify the changes you have made are reflected
 
 
 # Setting up your own project
@@ -30,30 +35,35 @@
 
 - How Docker works
   + https://docs.docker.com/engine/understanding-docker/
+  - What is a container?
+- What is an image (non-abstractly)?
+  - What kind of file?
+  - Where is it stored.
+  - etc.
+  - Image management (building/downloading/deleting)
 - Writing a dockerfile
   + https://docs.docker.com/engine/reference/builder/
 - Building the image
+  - Go through all the components of a Dockerfile
+  - Walk through how the current app works.
 
 ## Image Lab: Build a Dockerfile for an existing code base.
 
 * Walk thru Demo App Architecture
   - Add Architectural Diagram with each components
   - Examine code FoodTrucks/flask-app/app.py
-* Create your project workspace and code.
-  - Checkout `undockerized` branch
-  - Create project directory `your_project_name`
-  - Copy the existing web-app code from FoodTrucks/flask-app/
-  - Open FoodTrucks/flask-app/requirements.txt to see required software libraries and tools.
+* `git checkout undockerized` to start the project.
 * Dockerize Web-app  
   - Write a dockerfile for a project
+    - instructions for writing docker files
   - Build the image (`docker build`), test it (`docker run`)
+* Set-up Web app manually in command line.
   - build your own flask container
 `docker network create foodtrucks`
   - start the ES container
 `docker run -d --net foodtrucks -p 9200:9200 -p 9300:9300 --name es elasticsearch`
   - start the flask app container
 `docker run -d --net foodtrucks -p 5000:5000 --name foodtrucks-web prakhar1989/foodtrucks-web`
-
   - Learn commands needed to get it up and running correctly—database container, networking, etc.
 
 
@@ -61,15 +71,24 @@
 
 - What does compose do?
   + https://docs.docker.com/compose/overview/
+  - how does it work non-abstractly?
 - Why use compose?
 - Writing a compose file.
+  - Go over syntax, `image, command, ports, volumes, links`
 - Running `docker compose up` as part of the dev cycle
 
 ## Compose Lab
 * Write a compose file
-  - Create docker-compose.yaml files
-  - Go over syntax, `image, command, prots, volumes, links`
+  - Create docker-compose.yml files
+    - Defining services
+    - Calling the proper images (official vs. user)
+    - Opening ports
+    - Mounting volumes (how/why)
+    - Linking images together so they can communicate
+  - **Validate compose file for student in app?**
 * Run compose, test it.
+  - `docker-compose up -d`
+  - `docker ps -a`
 * Change code, test code.
 
 
