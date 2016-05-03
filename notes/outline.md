@@ -1,3 +1,18 @@
+# Pre-Course Set-up
+
+1. Wants to learn about Docker
+2. Docker.com
+3. "Download Docker for Mac to Learn More"
+4. Download and Install Docker to Mac
+5. Pop-up on Install: "Would you like to learn more?" -> YES
+6. Wheelhouse Web App opens in browser.
+7. Log in using DockerID.
+8. Redirects to First Page of Course.
+9. Instructions on running the learning container. (aka Lab.0)
+  + `docker run wheelhouse`
+  + log in to DockerID in the container
+    * VERIFIED -> Click next to continue
+
 # Getting Started with Docker
 
 ## Why Docker?
