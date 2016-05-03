@@ -13,9 +13,9 @@
   + log in to DockerID in the container
     * VERIFIED -> Click next to continue
 
-# Getting Started with Docker
+# Lesson 1: Getting Started with Docker
 
-## Why Docker?
+## Content 1.1: Why Docker?
 
 - Get up and running with code quickly.
 - Guaranteed to work no matter the computer you're using.
@@ -24,7 +24,7 @@
 - Share your project easily.
   + Docker Hub
 
-## First Lab: Running Dev Environment
+## Lab 1.2: Running Dev Environment
 
 * Run docker app with docker-compose
     - go to demo code directory
@@ -41,9 +41,9 @@
     - Verify the changes you have made are reflected
 
 
-# Setting up your own project
+# Lesson 2: Setting up your own project
 
-## What is Docker? (Containers & Images)
+## Content 2.1: What is Docker? (Containers & Images)
 
 - How Docker works
   + https://docs.docker.com/engine/understanding-docker/
@@ -59,7 +59,7 @@
   - Go through all the components of a Dockerfile
   - Walk through how the current app works.
 
-## Image Lab: Build a Dockerfile for an existing code base.
+## Lab 2.2: Build a Dockerfile for an existing code base.
 
 * Walk thru Demo App Architecture
   - Add Architectural Diagram with each components
@@ -79,7 +79,7 @@
   - Learn commands needed to get it up and running correctly—database container, networking, etc.
 
 
-## What is Docker Compose?
+## Content 2.3: What is Docker Compose?
 
 - What does compose do?
   + https://docs.docker.com/compose/overview/
@@ -89,7 +89,7 @@
   - Go over syntax, `image, command, ports, volumes, links`
 - Running `docker compose up` as part of the dev cycle
 
-## Compose Lab
+## Lab 2.4: Compose Lab
 * Write a compose file
   - Create docker-compose.yml files
     - Defining services
@@ -104,4 +104,4 @@
 * Change code, test code.
 
 
-## Conclusion, Summary, + Links to more info
+# Lesson 3: Conclusion, Summary, + Links to more info
