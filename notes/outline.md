@@ -11,9 +11,6 @@
 
 ## First Lab: Running Dev Environment
 
-### Run demo:
-
-### EX1:  
 * Run docker app with docker-compose
     - go to demo code directory
     - run `$ docker-compose up -d`
