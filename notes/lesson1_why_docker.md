@@ -1,4 +1,4 @@
-# Lesson 1: Intro to Docker
+# Lesson : Intro to Docker
 
 Docker is a tool that lets you easily run code on any machine you'd like. While building and running a new in-development program often takes a large amount of set-up and managing dependencies, Docker makes this process relatively trivial once an app has been set up to work with Docker, or "dockerized".
 
