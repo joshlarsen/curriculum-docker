@@ -23,22 +23,48 @@
   + http://it20.info/2016/01/how-is-your-shopping-experience-related-to-docker/
 - Share your project easily.
   + Docker Hub
+- What is `docker-compose` command?
 
 ## Lab 1.2: Running Dev Environment
 
 * Run docker app with docker-compose
     - go to demo code directory
-    - run `$ docker-compose up -d`
+    - run `$ docker-compose up -d`  
+        - (Note: I suggest to build new image prakhar1989/foodtrucks-web with docker beta in training container, this will save time to download, the downloaded version may not work in docker beta) 
       - may take some time to run
-      - verified by app
+      - verified by running app
     - User verify that docker containers are started and running. `$docker ps -a` (add expected output, see 2 containers running elasticsearch and web-app)
 * Run demo application
     - From your browser, visit `http://localhost:5000` to see running app
-    - Perform search
-* Edit code, see it instantly by mounting user volume
-    - Change CSS in `flask-app/static/styles/mail.css`
-    - Modify Static text  `/Users/inyoungcho/docker/FoodTrucks/flask-app/static/src/components/Intro.js` with Bla-Bla-Blah.
-    - Verify the changes you have made are reflected
+    - Perform search 
+* Edit static code, see it instantly by mounting user volume
+    - From training container, Change CSS in `flask-app/static/styles/main.css`
+        - change text color from #aaa to #ac39fd
+           (`html, body {
+              padding: 0;
+              color: #ac39fd;
+              box-sizing: border-box;
+              font-family: 'Titillium Web', sans-serif;
+              margin: 0;)
+             }`)
+        - change heading color from to #ac39fd 
+            (`div#heading {
+               background: #ac39fd;
+               margin: 0;
+              height: 10vh;
+              text-align: center;
+              }`)
+    - Verify the changes you have made are reflected on localhost:5000 and perform search
+* See volume /opt is mounted in web container properly and seen from training container as a local directory.
+    - Goto foodtrucks-web container `docker exec -i -t <container ID for prakhar1989/foodtrucks-web>`
+    - create a file `touch newFile` from `foodtrucks-web` container
+    - Goto training container, verify this  `newFile` exists
+* Check the volume is created 
+    - `docker volume ls` 
+* Check the network is created for foodtrucks 
+    - `docker network ls`
+* Inspect docker container 
+    - `docker inspect <container ID for prakhar1989/foodtrucks-web>`
 
 
 # Lesson 2: Setting up your own project
@@ -101,7 +127,11 @@
 * Run compose, test it.
   - `docker-compose up -d`
   - `docker ps -a`
-* Change code, test code.
-
+* Change code, change docker-compose.yaml to build new image, test code.
+  - Modify Static java script code,  ~/flask-app/static/src/components/Intro.js
+      - (Note: We need to build as this javascript code is minified during build) 
+  - change docker-compose.yaml `web: image: prakhar1989/foodtrucks-web` to `web: build: . `
+  - run `docker-compose up`
+  - Verify on browser. 
 
 # Lesson 3: Conclusion, Summary, + Links to more info
