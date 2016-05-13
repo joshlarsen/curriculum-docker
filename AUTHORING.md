@@ -91,92 +91,33 @@ To embed videos, use the following code (replacing the youtube video reference c
 
 ## Webhook payloads we process
 
-https://developer.github.com/webhooks/#events
+## Payloads we process
 
+### Docker CLI
+We support some of the commands in the Docker 1.11 CLI
 
-### Branches
+#### login
+We support *login*
 
-#### create
-We support *branches* for the CreateEvent
+`verification-type: cli-login`
 
-* `verification-type: branch-created`
+#### ps
+We support *ps*
 
-#### delete
-We support *branches* and *tags* for the DeleteEvent
+`verification-type: cli-ps`
 
-* `verification-type: branch-deleted`
-* `verification-type: tag-deleted`
+### Docker Compose CLI
+We support some of the commands in the Docker Compose 1.11 CLI
 
+#### up
+We support the *up* command
 
-### fork
-We support the ForkEvent
+`verification-type: compose-up`
 
-* `verification-type: fork-exists`
+#### down
+We support the *down* command
 
-
-### issues
-We support four different payloads for IssuesEvent.
-
-* created `verification-type: issue-created`
-* labeled `verification-type: issue-labeled`
-* closed `verification-type: issue-closed`
-* assigned `verification-type: issue-assigned`
-
-We can also verify that an issue was specifically assigned to the user
-
-* `verification-type: issue-assigned-to-self`
-
-Or was asigned to anyone else
-
-* `issue-assigned`
-
-#### issue_comment
-
-We support two different payloads for IssueCommentEvent.
-
-* created `verification-type: issue-comment-created`
-* mention `verification-type: issue-comment-mention`
-
-
-### pull_request
-
-We support four of the payloads for the PullRequestEvent.
-
-* `verification-type: pull-request`
-* `verification-type: pull-request-merged`
-* `verification-type: pull-request-closed`
-* `verification-type: pull-request-assigned`
-
-We can also verify that an pull_request was specifically assigned to the user
-
-* `verification-type: pull-request-assigned-to-self`
-
-Or was assigned to anyone else:
-
-* `pull-request-assigned`
-
-In addition, the issue_comment verifications will triggen when a comment is made on the main conversation view of a PR.
-
-#### pull\_request_comment
-
-We support the PullRequestReviewCommentEvent.
-
-* `verification-type: pull-request-review-comment`
-
-These are comments made in the "files changed" view of a PR.
-
-
-### Files
-
-#### push
-
-We support the PushEvent.
-
-The push event looks for one or more files to be either created or modified as part of the push event.
-
-* `verification-type: file-created`
-* `verification-type: file-modified`
-
+`verification-type: compose-down`
 
 ## Lab Slides
 
