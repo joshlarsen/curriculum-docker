@@ -1,4 +1,4 @@
-Welcome to the Intro to Docker course.
+## Welcome to the Intro to Docker course.
 
 In this course, you'll learn the basics of using Docker on a day-to-day basis, as well as how to set up your own project to use Docker (aka, how to "dockerize" it).
 
