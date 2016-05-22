@@ -1,6 +1,6 @@
-title: Demo
+title: Backend Demonstration
 pre-requisites:
-learning-objective: Learn Docker
+learning-objective: Demonstrate all valid Pequod validations
 screens:
   - image-slide:
       title: "Start the learning container"
@@ -12,7 +12,6 @@ screens:
 
         On the next few pages, you'll learn more about how to use these features of the application.
 
-
         Let's start the learning container
 
         ```
@@ -20,46 +19,45 @@ screens:
         ```
 
         Once the container starts, we you can move on to the next section.
-  - image-slide:
-      title: "Login"
-      image: blank.png
-      presenter-script: |
-        ## Login with your Docker ID
-
-        First we need to log you in with your Docker ID.
-
-        To login with your Docker ID, you'll need to run the following command and follow the prompts for your username and password
-        ```
-        $ docker login
-        ```
-
-        If you don't have a Docker ID, you can get one for free at https://hub.docker.com/.
   - lab:
-      title: "Exploring the Docker CLI"
+      title: "Validations Demo"
       id: PEQUOD-demo-lab
       presenter-script:
       introduction: |
         We're going to do the following steps inside the learning container.
       steps:
         - description: |
-            We can take a look at all of the running containers using the `ps` command for the `docker` CLI
-
-            ```
-            docker ps
-            ```
+            We can use `docker login`
+          id: PEQUOD-demo-login
+          verifications:
+            - verification-type: cli-login
+              id: PEQUOD-demo-login-verification
+              success-message: "Great job - `docker login` worked"
+              failure-message: "Waiting for `docker login`"
+        - description: |
+            We can use `docker ps`
           id: PEQUOD-demo-ps
           verifications:
             - verification-type: cli-ps
               id: PEQUOD-demo-ps-verification
-              success-message: "Great job - you listed the running containers."
-              failure-message: "It looks like you haven't committed the change yet."
-        - description: "Run the whalesay container"
-          id: PEQUOD-demo-whalesay
+              success-message: "Great job - `docker ps` worked"
+              failure-message: "Waiting for `docker ps`"
+        - description: |
+            We can use `docker-compose up -d`
+          id: PEQUOD-demo-compose-up
           verifications:
-            - verification-type: container-start
-              id: PEQUOD-demo-whalesay-verification
-              success-message: "Great job - you started the container."
-              failure-message: "It looks like you haven't started the container yet."
+            - verification-type: compose-up
+              id: PEQUOD-demo-composeup-verification
+              success-message: "Great job - `docker-compose up` worked"
+              failure-message: "Waitin for `docker-compose up`"
+        - description: |
+            We can use `docker-compose down`
+          id: PEQUOD-demo-compose-down
+          verifications:
+            - verification-type: compose-down
+              id: PEQUOD-demo-composedown-verification
+              success-message: "Great job - `docker-compose down` worked"
+              failure-message: "Waitin for `docker-compose down`"
 additional-labs:
 additional-questions:
 resources:
