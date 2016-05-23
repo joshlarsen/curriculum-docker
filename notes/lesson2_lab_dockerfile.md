@@ -6,13 +6,11 @@
 
 ## Checkout undockerized git branch to start your `FoodTruck` project
 
-* From your terminal window, go to your project directory under your home directory.
+* From your terminal window, Use the command line to navigate to the Foodtrucks working directory.
 
-* Use the command line to navigate to the Foodtrucks working directory.
+`$ cd ~/sit/Foodtrucks`
 
-`$ cd Foodtrucks`
-
-* Checkout the GitHub branch called undockerised [here](link/for/the/future).
+* Checkout the GitHub branch called undockerised.
 
 ` $ git checkout undockerized `
 
@@ -22,7 +20,7 @@
 
 ` vi Dockerfile `
 
-- Add the following items on Dockerfile, instructions for writing docker files
+- Add the following items on Dockerfile, instructions for writing docker files, replace your anme and your email for `MAINTAINER`
 
 
 ```
@@ -56,7 +54,7 @@ CMD [ "python", "./app.py" ]
 
 ```
 
-- Build the image (docker build)
+- Build the docker image for `foodtrucks-web` from the current directory. It will take few minutes for the firs time.
 
 ` $ docker build -t foodtrucks-web . ` 
 
@@ -64,10 +62,10 @@ CMD [ "python", "./app.py" ]
 
 ` $ docker images `
 
-## Set-up Web app manually in command line. Learn commands needed to get it up and running correctly—database container, networking, etc.
+## Set-up Web app container manually in command line. Learn commands needed to get it up and running correctly—database container, networking, etc.
 
 
-- build your own flask container docker network create `foodtrucks`
+- create docker network `foodtrucks`
 
 ` docker network create foodtrucks ` 
 
@@ -81,7 +79,7 @@ CMD [ "python", "./app.py" ]
 
 - Verify that two docker containers are started and running 
 
-`$ docker ps -a`. 
+`$ docker ps -a`
 
 - You should see 2 containers running, elasticsearch and foodtruck-web.
 

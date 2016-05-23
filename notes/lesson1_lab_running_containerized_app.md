@@ -38,7 +38,7 @@ Options:
 
 * Verify that two docker containers are started and running 
 
-`$ docker ps -a`. 
+`$ docker ps -a`
 
 * You should see 2 containers running, elasticsearch and foodtruck-web.
 
