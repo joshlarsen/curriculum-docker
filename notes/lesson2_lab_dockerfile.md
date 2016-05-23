@@ -67,7 +67,7 @@ CMD [ "python", "./app.py" ]
 
 - create docker network `foodtrucks`
 
-` docker network create foodtrucks ` 
+` $ docker network create foodtrucks ` 
 
 - start the ES container 
 
