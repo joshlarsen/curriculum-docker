@@ -1,4 +1,4 @@
-# Project 2:Build a Dockerfile for an existing code base
+# Project 2: Build a Dockerfile for an existing code base
 
 ## Walk thru Demo App Architecture
 - Add Architectural Diagram with each components
