@@ -1,4 +1,3 @@
-
 # Project 1: Using Docker to Set Up a Development Environment Locally
 
 We've set up a project so that you can see how easy Docker makes set-up for someone new to your code base.
