@@ -8,8 +8,6 @@
 
 * From your terminal window, go to your project directory under your home directory.
 
-`$ cd ~/sit`
-
 * Use the command line to navigate to the Foodtrucks working directory.
 
 `$ cd Foodtrucks`
