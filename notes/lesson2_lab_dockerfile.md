@@ -1,3 +1,8 @@
+# Lesson 2: Building a docker image
+
+
+
+
 # Project 2: Build a Dockerfile for an existing code base
 
 ## Walk thru Demo App Architecture
