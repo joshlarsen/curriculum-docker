@@ -1,6 +1,16 @@
 # Lesson 2: Building a docker image
 
+To get the benefits of Docker for your own project, you'll need to "Dockerize" that project.
 
+For most small code bases, this is pretty simple. You write a file that defines all the dependancies that your code needs to run, and then you use `docker build` to build an image that you can run from any computer. 
+
+The food truck app you worked with in the last lesson was already dockerized. Below, we're going to take you through the steps fo dockerizing yourself from scratch.
+
+In this lesson, we're going to be referencing the Docker docs a lot. The Docs are a great place to learn from, and include a lot of in-depth information on the way Docker works. We want to teach you not just about Docker, but also how to get information about Docker yourself in the future. 
+
+## dockerfile
+
+The dockerfile is a plaintext file that defines 
 
 
 # Project 2: Build a Dockerfile for an existing code base
