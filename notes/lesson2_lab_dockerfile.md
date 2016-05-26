@@ -8,9 +8,23 @@ The food truck app you worked with in the last lesson was already dockerized. Be
 
 In this lesson, we're going to be referencing the Docker docs a lot. The Docs are a great place to learn from, and include a lot of in-depth information on the way Docker works. We want to teach you not just about Docker, but also how to get information about Docker yourself in the future. 
 
-## dockerfile
+## How Docker Works
 
-The dockerfile is a plaintext file that defines 
+The `dockerfile` is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
+
+So to Dockerize an app, first you have to write the dockerfile for that app. The dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what commands should be run at start-up.
+
+Once you write the `dockerfile`, you run `docker build` on that file, and the Docker daemon takes the information from the `dockerfile` and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
+
+It's easy to confuse images and containers, because an image always runs in one container, and one container can only run a single image. Think of the image as the data necessary to run a container.
+
+
+## Writing the `dockerfile`
+
+
+
+
+
 
 
 # Project 2: Build a Dockerfile for an existing code base
