@@ -10,18 +10,39 @@ In this lesson, we're going to be referencing the Docker docs a lot. The Docs ar
 
 ## How Docker Works
 
-The `dockerfile` is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
+The `Dockerfile` is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
 
 So to Dockerize an app, first you have to write the dockerfile for that app. The dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what commands should be run at start-up.
 
-Once you write the `dockerfile`, you run `docker build` on that file, and the Docker daemon takes the information from the `dockerfile` and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
+Once you write the `Dockerfile`, you run `docker build` on that file, and the Docker daemon takes the information from the `Dockerfile` and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
 
 It's easy to confuse images and containers, because an image always runs in one container, and one container can only run a single image. Think of the image as the data necessary to run a container.
 
 
-## Writing the `dockerfile`
+## Writing the `Dockerfile`
 
+A Dockerfile is a plaintext file named simply `Dockerfile`—there's no extension. 
 
+Inside the file is a series of comments and commands, in this format:
+
+    # comment
+    COMMAND arguments
+
+While the file is not case-sensative, it's recommended to write all commands in ALL CAPS to make the file easier to read.
+
+The commands are interpreted by the Docker Daemon when you call `docker build`, and are executed in order to set up the Image.
+
+The Dockerfile must start with the `FROM` command. Images are created in layers, which means you can use an Image as the base image for your own. The `FROM` command defines what your base layer will be. As arguments, it takes the name of the image. This name can be extended with the Docker Hub Username of the maintainer of the image, and the version of the image, in the format `username/imagename:version`. For instance:
+
+    FROM python:3.5
+
+This command will build an image from the 3.5 version of the official Python image.
+
+    FROM prakhar1989/catnip
+
+This command takes the most recent version of the Image `catnip` from the user `prakhar1989`.
+
+Another necessary Dockerfile command is `EXPOSE`
 
 
 
