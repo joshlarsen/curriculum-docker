@@ -32,6 +32,8 @@ While the file is not case-sensative, it's recommended to write all commands in 
 
 The commands are interpreted by the Docker Daemon when you call `docker build`, and are executed in order to set up the Image.
 
+### The `FROM` Command
+
 The Dockerfile must start with the `FROM` command. Images are created in layers, which means you can use an Image as the base image for your own. The `FROM` command defines what your base layer will be. As arguments, it takes the name of the image. This name can be extended with the Docker Hub Username of the maintainer of the image, and the version of the image, in the format `username/imagename:version`. For instance:
 
     FROM python:3.5
@@ -42,9 +44,53 @@ This command will build an image from the 3.5 version of the official Python ima
 
 This command takes the most recent version of the Image `catnip` from the user `prakhar1989`.
 
-Another necessary Dockerfile command is `EXPOSE`
+
+### The `RUN` Command
+
+Perhaps the most common command is the `RUN` command. `RUN` is used to build up the Image you're creating. For each `RUN` command, Docker will run the command then create a new layer of the image. This way you can roll back your image to previous states easily.
+
+The `RUN` command is largely used to install necessary components onto your new Image. So you'll see a lot of `apt-get` commands.
+
+The syntax for a `RUN` instruction is to place the full text of the shell command after the `RUN`:
+
+    RUN apt-get install -y curl
+
+    RUN mkdir /user/local/foo
+
+This will create an Image with curl installed, then use that Image to create an image and create a new image from it with a /user/local/foo folder.
+
+This will automatically run in the `/bin/sh` shell. If you'd like to define a different shell, then the syntax is:
+
+    RUN /bin/bash -c 'mkdir /user/local/foo'
 
 
+### `LABEL`
+
+`LABEL` is used to add labels to your Image. These labels will be used on Docker Hub and other applications. For instance, the following will set the version number of this particular container:
+
+    LABEL version=1.0
+
+
+### `EXPOSE`
+
+The `EXPOSE` command opens ports in your Image so that it can speak to the outside world. The following tells the Image to listen at port 4000:
+
+    `EXPOSE 4000`
+
+
+### `CMD`
+
+The final really important command is `CMD`. 
+
+`CMD` defines the commands that will run on the Image at start-up. Unlike a `RUN`, this does not create a new layer for the Image, but simply runs the command.
+
+There can only be one `CMD` per a Dockerfile/Image. If you need to run multiple commands, the best way to do that is to have the `CMD` run a script.
+
+`CMD` requires that you tell it where to run the command, unlike `RUN`. So example `CMD` commands would be:
+
+    CMD ["python", "./app.py"]
+
+    CMD ["/bin/bash", "echo", "Hello World"]
 
 
 
