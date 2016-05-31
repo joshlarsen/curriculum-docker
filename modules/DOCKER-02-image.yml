@@ -130,7 +130,7 @@ screens:
             First, let's remove the Dockerfile and docker-compose.yml files. We've already set up a branch for you without these files, so just type `git checkout undockerized`. If at any point you want to see the files again as a reference, `git checkout master` will bring them back. 
           id: docker-image-branching
         - description: |
-            Now it's time to write the Dockerfile. Create a text file called simply `Dockerfile` in the top-level directory of your codebase.
+            Now it's time to write the Dockerfile. Create a text file called simply `Dockerfile` in the top-level directory of your codebase (you can do this by typing `touch Dockerfile` in the terminal).
           id: docker-image-dockerfile-create
         - description: |
             Open the Dockerfile in a text editor such as vim. You'll start by adding the `FROM` command line. It should look like this:

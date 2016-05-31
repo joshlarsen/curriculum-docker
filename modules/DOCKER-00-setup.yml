@@ -22,10 +22,9 @@ screens:
             Open the terminal. `CMD-space` then typing `terminal` should bring it up. If you've never used the terminal before, this course might be a bit advanced for you. 
           id: docker-setup-terminal
         - description: |
-            Navigate to the folder with the learning container in it: `cd /Wheelhouse/learning-container`.
-          id: docker-setup-folder
-        - description: |
-            Run the container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`
+            Run the learning container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`. 
+
+            You'll do all your work inside this learning container, pretending its your everday dev environment. This way we can see what work you're doing locally and give you feedback on it.
           id: docker-setup-run-container
         - description: |
             Once the container is up and running, log in by typing `docker login` and entering your DockerID and password. Once you're logged in, you can move on.
@@ -33,8 +32,8 @@ screens:
           verifications:
             - verification-type: cli-login
               id: docker-setup-login
-              success-message: "We're reading you loud and clear! Click "next" to move on."
-              failure-message: "It looks like you haven't logged into the container yet."
+              success-message: "We're reading you loud and clear! Click 'next' to move on."
+              failure-message: "It looks like you haven't logged into the container yet. The course validations will not work until you do."
 additional-labs:
 additional-questions:
 resources:

@@ -45,7 +45,7 @@ screens:
 
         One of the nice things about this workflow is that your code can still live on your local machine, even while it's run in the docker container. That way, you can edit the code locally using whatever set-up you like the most (this course was written in Sublime Text 3, for instance), and it will auto-update in the container when you save it.
 
-        Run through the steps below on the learning container you set up earlier to see how this works in action.
+        Run through the steps below **in the learning container** you set up earlier to see how this works in action.
       steps:
         - description: |
             Run `docker ps` to see what is running. The only running container should be the learning container you're working in.
@@ -54,7 +54,7 @@ screens:
             - verification-type: cli-ps
               id: docker-demo-ps-verification
               success-message: "You ran `ps` correctly. Let's run some containers to make it less empty."
-              failure-message: "It looks like you haven't run the command yet."
+              failure-message: "It looks like you haven't run the command yet. Make sure you're doing it in the learning container!"
         - description: |
             First, download your new code. Type `git clone https://github.com/wheelhouseio/FoodTrucks.git`, and once that's finished `cd` into the `/FoodTrucks` directory.
           id: docker-up-cd
@@ -64,22 +64,25 @@ screens:
             Now we run it anyway! To run the code in a docker container, type `docker-compose up -d` in the code's top-level directory. 
 
             You'll want to make sure to include the `-d` or you won't be able to use your command line while the containers are running!
-          id: docker-demo-compose-up-lab
+          id: docker-up-compose-up
           verifications:
             - verification-type: compose-up
-              id: docker-demo-compose-up-lab-verification
+              id: docker-up-compose-up-verification
               success-message: "Good work, it looks like the code is now running on your computer in a container!"
               failure-message: "It looks like you haven't run `docker-compose up -d` yet."
         - description: |
             Run `docker ps` again to see the new containers that are now running.
-          id: docker-demo-ps-2
+          id: docker-up-ps-2
+        - description: |
+            Go to `docker.local:5000` in your browser to see the application running. 
+          id: docker-up-browser
         - description: |
             You can free up resources on your machine by spinning down the images used to run the code. Run `docker-compose down` to spin them down gracefully.
-          id: docker-demo-compose-down-lab
+          id: docker-up-compose-down
           verifications:
             - verification-type: compose-down
-              id: docker-demo-compose-down-lab-verification
-              success-message: "Great, all the images have spun down. Run a `docker ps` to check it out yourself. Congrats, you completed the course!"
+              id: docker-up-compose-down-verification
+              success-message: "Great, all the images have spun down. Run a `docker ps` to check it out yourself. Click 'next' to move on."
               failure-message: "It looks like the project is still running."
 additional-labs:
 additional-questions:
