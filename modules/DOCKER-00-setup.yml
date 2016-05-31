@@ -1,0 +1,40 @@
+title: Course Set-Up
+pre-requisites: 
+learning-objective: 
+screens:
+  - lab:
+      title: Running a Docker Project
+      id: docker-setup
+      presenter-script:
+      introduction: |
+        In this course, you'll learn the basics of using Docker on a day-to-day basis, as well as how to set up your own project to use Docker (aka, how to "dockerize" it).
+
+        You'll do this by working on a real web app inside a Docker container. We'll watch you do the work, and give you feedback when you've made mistakes and let you know when you've finished a task and it's safe to move on.
+
+        The course is broken into two parts. In the first, you'll learn about why Docker is so powerful, and what the process for using it day to day in your development routine should be. In the second part, we'll walk you through the steps of dockerizing an app and ensuring you can get it up and running on any computer in just a few minutes.
+
+        Before we start, we need to make sure you have Docker installed properly. Walk through the steps below, and once the last step has turend green you're ready to hit "next" and move on to the first part of the course.
+      steps:
+        - description: |
+            Download and install Docker for Mac if you haven't already.
+          id: docker-setup-install
+        - description: |
+            Open the terminal. `CMD-space` then typing `terminal` should bring it up. If you've never used the terminal before, this course might be a bit advanced for you. 
+          id: docker-setup-terminal
+        - description: |
+            Navigate to the folder with the learning container in it: `cd /Wheelhouse/learning-container`.
+          id: docker-setup-folder
+        - description: |
+            Run the container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`
+          id: docker-setup-run-container
+        - description: |
+            Once the container is up and running, log in by typing `docker login` and entering your DockerID and password. Once you're logged in, you can move on.
+          id: docker-setup-login
+          verifications:
+            - verification-type: cli-login
+              id: docker-setup-login
+              success-message: "We're reading you loud and clear! Click "next" to move on."
+              failure-message: "It looks like you haven't logged into the container yet."
+additional-labs:
+additional-questions:
+resources:

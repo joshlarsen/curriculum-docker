@@ -1,0 +1,20 @@
+title: Docker User Testing
+description: Tell us what you think.
+configurator_class: Configurator::None
+
+sections:
+  -
+    title: Learning Environment Set-Up
+    description: Setting up the learning container
+    modules:
+      - DOCKER-00-setup
+  -
+    title: Docker for Devs
+    description: Using Docker Compose
+    modules:
+      - DOCKER-01-up
+  -
+    title: Building an Image
+    description: Writing a Dockerfile and running build
+    modules:
+      - DOCKER-02-image
