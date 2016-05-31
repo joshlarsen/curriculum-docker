@@ -17,16 +17,16 @@ screens:
 
         ## How Docker Works
 
-        The `Dockerfile` is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
+        The Dockerfile is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
 
-        So to Dockerize an app, first you have to write the dockerfile for that app. The dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what commands should be run at start-up.
+        So to Dockerize an app, first you have to write the Dockerfile for that app. The Dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what commands should be run at start-up.
 
-        Once you write the `Dockerfile`, you run `docker build` on that file, and the Docker daemon takes the information from the `Dockerfile` and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
+        Once you write the Dockerfile, you run `docker build` on that file, and the Docker daemon takes the information from the Dockerfile and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
 
         It's easy to confuse images and containers, because an image always runs in one container, and one container can only run a single image. Think of the image as the data necessary to run a container.
 
 
-        ## Writing the `Dockerfile`
+        ## Writing the Dockerfile
 
         A Dockerfile is a plaintext file named simply `Dockerfile`—there's no extension. 
 
@@ -39,7 +39,7 @@ screens:
 
         The commands are interpreted by the Docker Daemon when you call `docker build`, and are executed in order to set up the Image.
 
-        ### The `FROM` Command
+        ### The FROM Command
 
         The Dockerfile must start with the `FROM` command. Images are created in layers, which means you can use an Image as the base image for your own. The `FROM` command defines what your base layer will be. As arguments, it takes the name of the image. This name can be extended with the Docker Hub Username of the maintainer of the image, and the version of the image, in the format `username/imagename:version`. For instance:
 
@@ -52,7 +52,7 @@ screens:
         This command takes the most recent version of the Image `catnip` from the user `prakhar1989`.
 
 
-        ### The `RUN` Command
+        ### The RUN Command
 
         Perhaps the most common command is the `RUN` command. `RUN` is used to build up the Image you're creating. For each `RUN` command, Docker will run the command then create a new layer of the image. This way you can roll back your image to previous states easily.
 
@@ -71,27 +71,27 @@ screens:
             RUN /bin/bash -c 'mkdir /user/local/foo'
 
 
-        ### `LABEL`
+        ### LABEL
 
         `LABEL` is used to add labels to your Image. These labels will be used on Docker Hub and other applications. For instance, the following will set the version number of this particular container:
 
             LABEL version=1.0
 
-        ### `MAINTAINER`
+        ### MAINTAINER
 
         A specific version of `LABEL` that takes a name and email of the person who maintains the Image.
 
             MAINTAINER Adrian M Ryan <adrian.ryan@docker.com>
 
 
-        ### `EXPOSE`
+        ### EXPOSE
 
         The `EXPOSE` command opens ports in your Image so that it can speak to the outside world. The following tells the Image to listen at port 4000:
 
-            `EXPOSE 4000`
+            EXPOSE 4000
 
 
-        ### `CMD`
+        ### CMD
 
         The final really important command is `CMD`. 
 
@@ -106,7 +106,7 @@ screens:
             CMD ["/bin/bash", "echo", "Hello World"]
 
 
-        ### `ADD`
+        ### ADD
 
         Adds files and directories from the current directory into the container. 
 
@@ -115,11 +115,19 @@ screens:
         If there is an /junk directory inside the directory with the Dockerfile in it, this will add all the files and folders from that directory into the /usr/junk folder in the new container.
 
 
-        ### `WORKDIR`
+        ### WORKDIR
 
         This sets the directory that all the following RUN, CMD, ADD, and other commands will run in.
 
             WORKDIR /usr/junk
+
+        ### Comments
+
+        If a line begins with a `#`, then all the following text on that line will be ignored by the build command. This is a handy way to document what the purpose of your Dockerfile commands are so that you can more easily troubleshoot later.
+
+        ## More Info
+
+        For a full listing of the proper Dockerfile commands, check out the <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">the Dockerfile reference</a> in the Docker docs.
 
   - lab:
       title: Writing a Dockerfile
@@ -141,18 +149,29 @@ screens:
         - description: |
             Now, on each new line you'll want to write a command that completes one of the following bullet points, in this order. Remember, if you get stuck on any of them you can check the answer by going to the master branch with `git checkout master` and looking at the Dockerfile there.
 
-            * Add your DockerID as the maintainer
-            * Run `apt-get -yqg update`
-            * Using apt-get, install python-pip and python-dev
-            * Using apt-get, install nodejs and npm
-            * Link nodejs and node with the `ln -s /usr/bin/nodejs /usr/bin/node` command
-            * Add flaskapp to the directory /opt/flaskapp
-            * Set /opt/flaskapp to be the working directory
-            * Run `npm install`
-            * Run `npm run build`
-            * Run `pip install -r requirements.txt`
-            * Expose port 5000
-            * On start-up, run the command `python ./app.py`
+            \* Add your DockerID as the maintainer
+
+            \* Run `apt-get -yqg update`
+
+            \* Using apt-get, install python-pip and python-dev
+
+            \* Using apt-get, install nodejs and npm
+
+            \* Link nodejs and node with the `ln -s /usr/bin/nodejs /usr/bin/node` command
+
+            \* Add flaskapp to the directory /opt/flaskapp
+
+            \* Set /opt/flaskapp to be the working directory
+
+            \* Run `npm install`
+
+            \* Run `npm run build`
+
+            \* Run `pip install -r requirements.txt`
+
+            \* Expose port 5000
+
+            \* On start-up, run the command `python ./app.py`
 
           id: docker-image-dockerfile-commands
         - description: |
