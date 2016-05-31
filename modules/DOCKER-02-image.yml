@@ -2,9 +2,11 @@ title: Dockerfile
 pre-requisites: 
 learning-objective: docker-compose up
 screens:
-  - image-screen:
+  - lab:
       title: "Dockerizing Your Project: Docker Images"
-      presenter-script: |
+      id: docker-image-text
+      presenter-script: 
+      introduction: |
         To get the benefits of Docker for your own project, you'll need to "Dockerize" that project.
 
         For most small code bases, this is pretty simple. You write a file that defines all the dependancies that your code needs to run, and then you use `docker build` to build an image that you can run from any computer. 
