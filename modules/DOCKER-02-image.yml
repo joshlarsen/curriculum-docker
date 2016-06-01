@@ -111,7 +111,6 @@ screens:
               id: DOCKER-01-q2-a3
               response: Not quite. Go back to read about the RUN command if you need some help.
               correct: false
-
   - image-slide:
       title: "Writing a Dockerfile"
       image: blank.png
@@ -192,7 +191,6 @@ screens:
               id: DOCKER-01-q5-a2
               response: Not quite. The answer is "ADD /code /bin/code". Go back to read about the ADD command if you need some help understanding why.
               correct: false
-
   - image-slide:
       title: "Writing a Dockerfile"
       image: blank.png
