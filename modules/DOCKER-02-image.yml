@@ -275,7 +275,6 @@ screens:
       presenter-script: 
       introduction: |
         For a full listing of the proper Dockerfile commands and more about the commands we've taught you, check out the <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">the Dockerfile reference</a> in the Docker docs.
-
   - lab:
       title: Writing a Dockerfile
       id: docker-image

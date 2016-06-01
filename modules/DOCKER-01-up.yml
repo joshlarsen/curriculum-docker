@@ -35,8 +35,6 @@ screens:
 
         <div class='container' data-video-url='https://youtu.be/V00VzuQ9Aqg'></div>
 
-
-
         These and many more workflows are made possible by using Docker. In this course, we'll be focusing on the first one: how to use Docker Engine and Docker Compose to standardize your dev environment and get it up and running on any machine in just a few minutes. On the next page, we'll walk you through getting a pre-built dev environment running on your computer, then in the next few lessons we'll teach you how to "dockerize" your own projects.
   - lab:
       title: Playing with the container.
