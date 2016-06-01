@@ -14,7 +14,6 @@ screens:
 
         In this lesson, we're going to be referencing the Docker docs a lot. The Docs are a great place to learn from, and include a lot of in-depth information on the way Docker works. We want to teach you not just about Docker, but also how to get information about Docker yourself in the future. 
 
-
         ## How Docker Works
 
         The Dockerfile is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
@@ -50,7 +49,6 @@ screens:
             FROM prakhar1989/catnip
 
         This command takes the most recent version of the Image `catnip` from the user `prakhar1989`.
-
 
         ### The RUN Command
 
@@ -121,13 +119,11 @@ screens:
 
             MAINTAINER Adrian M Ryan <adrian.ryan@docker.com>
 
-
         ### EXPOSE
 
         The `EXPOSE` command opens ports in your Image so that it can speak to the outside world. The following tells the Image to listen at port 4000:
 
             EXPOSE 4000
-
 
         ### ADD
 
@@ -200,7 +196,6 @@ screens:
         This sets the directory that all the following RUN, CMD, ADD, and other commands will run in.
 
             WORKDIR /usr/junk
-
 
         ### CMD
 
@@ -283,6 +278,7 @@ screens:
             Open the Dockerfile in a text editor. We recommend nano. `nano Dockerfile` in the terminal. 
 
             You'll start by adding the `FROM` command line. It should look like this:
+            
                 FROM ubuntu:14.04
           id: docker-image-dockerfile-from
         - description: |
