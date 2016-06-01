@@ -22,7 +22,7 @@ screens:
             Open the terminal. `CMD-space` then typing `terminal` should bring it up. If you've never used the terminal before, this course might be a bit advanced for you. 
           id: docker-setup-terminal
         - description: |
-            Run the learning container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`. 
+            Run the learning container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`. The command prompt will change once it's up and running to look like `root@488eed61e8e9:/#` once it's completed.
 
             You'll do all your work inside this learning container, pretending its your everday dev environment. This way we can see what work you're doing locally and give you feedback on it.
           id: docker-setup-run-container
