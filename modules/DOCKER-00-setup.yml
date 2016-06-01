@@ -16,15 +16,25 @@ screens:
         Before we start, we need to make sure you have Docker installed properly. Walk through the steps below, and once the last step has turend green you're ready to hit "next" and move on to the first part of the course.
       steps:
         - description: |
-            Download and install Docker for Mac if you haven't already.
+            Download and install <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/" target="_blank">Docker for Mac</a> if you haven't already. Make sure it's running.
           id: docker-setup-install
         - description: |
             Open the terminal. `CMD-space` then typing `terminal` should bring it up. If you've never used the terminal before, this course might be a bit advanced for you. 
           id: docker-setup-terminal
         - description: |
-            Run the learning container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`. The command prompt will change once it's up and running to look like `root@488eed61e8e9:/#` once it's completed.
+            Let's try a few simple Docker commands. Run `docker --version` to see what version of Docker is running. If you get an error, then you probably haven't installed Docker and you should do that above!
+          id: docker-setup-version
+        - description: |
+            Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image. If you get an error telling you the Deamon isn't working, then Docker isn't running, and you need to start the Docker for Mac application.
+          id: docker-setup-hello-world
+        - description: |
+            We're going to do most of the work in this course inside a container that will act as your dev environment.
 
-            You'll do all your work inside this learning container, pretending its your everday dev environment. This way we can see what work you're doing locally and give you feedback on it.
+            Run the learning container by copy-pasting this script into the terminal: `docker run -it -v /var/run/docker.sock:/var/run/docker.sock learning /bin/bash`. 
+
+            The command prompt will change once it's up and running to look like `root@488eed61e8e9:/#` once it's completed.
+
+            Doing work in this container will ensure than we can give you feedback on the work you've done!
           id: docker-setup-run-container
         - description: |
             Once the container is up and running, log in by typing `docker login` and entering your DockerID and password. Once you're logged in, you can move on.
@@ -34,12 +44,6 @@ screens:
               id: docker-setup-login
               success-message: "We're reading you loud and clear! Click 'next' to move on, or try out the following optional commands."
               failure-message: "It looks like you haven't logged into the container yet. The course validations will not work until you do."
-        - description: |
-            Run `docker --version` to see what version of Docker is running.
-          id: docker-setup-version
-        - description: |
-            Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image.
-          id: docker-setup-hello-world
 additional-labs:
 additional-questions:
 resources:
