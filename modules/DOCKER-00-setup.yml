@@ -1,11 +1,11 @@
 title: Course Set-Up
-pre-requisites: 
-learning-objective: 
+pre-requisites: placeholder
+learning-objective: placeholder
 screens:
   - lab:
       title: Running a Docker Project
       id: docker-setup
-      presenter-script:
+      presenter-script: placeholder
       introduction: |
         In this course, you'll learn the basics of using Docker on a day-to-day basis, as well as how to set up your own project to use Docker (aka, how to "dockerize" it).
 

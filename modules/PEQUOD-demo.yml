@@ -22,7 +22,7 @@ screens:
   - lab:
       title: "Validations Demo"
       id: PEQUOD-demo-lab
-      presenter-script:
+      presenter-script: placehodler
       introduction: |
         We're going to do the following steps inside the learning container.
       steps:

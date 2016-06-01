@@ -1,12 +1,11 @@
 title: Docker-Compose Up
-pre-requisites: 
+pre-requisites: placeholder
 learning-objective: docker-compose up
 screens:
-  - lab:
+  - image-slide:
       title: How to Use Docker
-      id: docker-up-text
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         Docker is a tool that lets you easily run code on any machine you'd like. While building and running a new in-development program often takes a large amount of set-up and managing dependencies, Docker makes this process relatively trivial once an app has been set up to work with Docker, or "dockerized".
 
         In this course, we'll teach you how to set up and use Docker to speed up the most common developer workflow.
@@ -39,7 +38,7 @@ screens:
   - lab:
       title: Playing with the container.
       id: docker-up
-      presenter-script:
+      presenter-script: placeholder
       introduction: |
         Let's look at how you might use Docker to speed up your developer workflow. We've set up a project so that you can see how easy Docker makes set-up for someone new to your code base, which we'll use in the tutorial below.
 

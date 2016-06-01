@@ -1,12 +1,11 @@
 title: Dockerfile
-pre-requisites: 
-learning-objective: docker-compose up
+pre-requisites: placeholder
+learning-objective: Dockerfile
 screens:
-  - lab:
+  - image-slide:
       title: "Dockerizing Your Project: Docker Images"
-      id: docker-image-text-01
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         To get the benefits of Docker for your own project, you'll need to "Dockerize" that project.
 
         For most small code bases, this is pretty simple. You write a file that defines all the dependancies that your code needs to run, and then you use `docker build` to build an image that you can run from any computer. 
@@ -25,11 +24,10 @@ screens:
         Once you write the Dockerfile, you run `docker build` on that file, and the Docker daemon takes the information from the Dockerfile and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
 
         It's easy to confuse images and containers, because an image always runs in one container, and one container can only run a single image. Think of the image as the data necessary to run a container.
-  - lab:
+  - image-slide:
       title: "Writing a Dockerfile"
-      id: docker-image-text-02
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         A Dockerfile is a plaintext file named simply `Dockerfile`—there's no extension. 
 
         Inside the file is a series of comments and commands, in this format:
@@ -71,11 +69,10 @@ screens:
         This will automatically run in the `/bin/sh` shell. If you'd like to define a different shell, then the syntax is:
 
             RUN /bin/bash -c 'mkdir /user/local/foo'
-
   - quiz:
       title: "Dockerfile Question 1"
       id: DOCKER-01-quiz-01
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "How would you use the FROM command to build an image based on the official Python 3.5 image?"
           id: DOCKER-01-q1
@@ -96,7 +93,7 @@ screens:
   - quiz:
       title: "Dockerfile Question 2"
       id: DOCKER-01-quiz-02
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "How would you create a new folder in your image called `/user/local/foo`?"
           id: DOCKER-01-q2
@@ -115,11 +112,10 @@ screens:
               response: Not quite. Go back to read about the RUN command if you need some help.
               correct: false
 
-  - lab:
+  - image-slide:
       title: "Writing a Dockerfile"
-      id: docker-image-text-03
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         ### MAINTAINER
 
         A command that takes a name and email of the person who maintains the Image.
@@ -141,11 +137,10 @@ screens:
             ADD /junk /usr/junk
 
         If there is an /junk directory inside the directory with the Dockerfile in it, this will add all the files and folders from that directory into the /usr/junk folder in the new container.
-
   - quiz:
       title: "Dockerfile Question 3"
       id: DOCKER-01-quiz-03
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "Add a maintainer to an image who's name is Adrian Ryan and whose email address is adrian.ryan@docker.com?"
           id: DOCKER-01-q3
@@ -166,7 +161,7 @@ screens:
   - quiz:
       title: "Dockerfile Question 4"
       id: DOCKER-01-quiz-04
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "Expose port 3080 of a container."
           id: DOCKER-01-q4
@@ -183,7 +178,7 @@ screens:
   - quiz:
       title: "Dockerfile Question 5"
       id: DOCKER-01-quiz-05
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "How would you add the contents of the /code folder to the /bin/code folder in the Image?"
           id: DOCKER-01-q5
@@ -198,11 +193,10 @@ screens:
               response: Not quite. The answer is "ADD /code /bin/code". Go back to read about the ADD command if you need some help understanding why.
               correct: false
 
-  - lab:
+  - image-slide:
       title: "Writing a Dockerfile"
-      id: docker-image-text-04
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         ### WORKDIR
 
         This sets the directory that all the following RUN, CMD, ADD, and other commands will run in.
@@ -230,7 +224,7 @@ screens:
   - quiz:
       title: "Dockerfile Question 6"
       id: DOCKER-01-quiz-06
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "Tell the Dockerfile to run all the following RUN, CMD, and other commands in the /bin/code directory."
           id: DOCKER-01-q6
@@ -247,7 +241,7 @@ screens:
   - quiz:
       title: "Dockerfile Question 7"
       id: DOCKER-01-quiz-07
-      presenter-script: As we go through the commands for a Dockerfile, we'll ask you questions about what you've learned to help you better understand them.
+      presenter-script: placeholder
       questions:
         - title: "Tell python to run the `app.py` program in `/bin/code`, remembering that you already set the working directory."
           id: DOCKER-01-q7
@@ -269,16 +263,15 @@ screens:
               id: DOCKER-01-q7-a2
               response: Not quite. It's "CMD ["python", "./app.py"]". Go back and read over the CMD command if you need help understanding why.
               correct: false
-  - lab:
+  - image-slide:
       title: "More Info on Dockerfiles"
-      id: docker-image-text-05
-      presenter-script: 
-      introduction: |
+      image: blank.png
+      presenter-script: |
         For a full listing of the proper Dockerfile commands and more about the commands we've taught you, check out the <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">the Dockerfile reference</a> in the Docker docs.
   - lab:
       title: Writing a Dockerfile
       id: docker-image
-      presenter-script:
+      presenter-script: placeholder
       introduction: |
         We're going to use the same code as the last project, but this time write the Dockerfile and docker-compose.yml files ourselves. 
       steps:

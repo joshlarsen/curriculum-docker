@@ -5,7 +5,7 @@ screens:
   - lab:
       title: Running a Docker Project
       id: docker-demo-compose-up
-      presenter-script:
+      presenter-script: placeholder
       introduction: |
         Let's pretend its your first day on a new job as a developer. What's on of the first things you're going to want to do (after you figure out where the bathroom is?).
 
@@ -44,7 +44,7 @@ screens:
   - lab:
       title: Playing with the container.
       id: docker-demo-compose-down
-      presenter-script:
+      presenter-script: placeholder
       introduction: |
         So now that the code is running in a container, what can you do with it?
 
