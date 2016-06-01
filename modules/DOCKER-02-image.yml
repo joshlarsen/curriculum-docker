@@ -323,8 +323,11 @@ screens:
 
           id: docker-image-dockerfile-commands
         - description: |
-            Once the new Dockerfile is complete and looks just like the one in the master branch, run `docker build` in the undockerized branch.
+            Once the new Dockerfile is complete and looks just like the one in the master branch, run `docker build -t foodtrucks-web .` in the undockerized branch.
           id: docker-image-build
+        - description: |
+            Run `docker images` to make sure the image has been built.
+          id: docker-image-images
 additional-labs:
 additional-questions:
 resources:
