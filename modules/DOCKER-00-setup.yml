@@ -39,7 +39,7 @@ screens:
           id: docker-setup-version
         - description: |
             Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image.
-          id: docker-setup-version
+          id: docker-setup-hello-world
 additional-labs:
 additional-questions:
 resources:
