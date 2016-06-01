@@ -32,8 +32,14 @@ screens:
           verifications:
             - verification-type: cli-login
               id: docker-setup-login
-              success-message: "We're reading you loud and clear! Click 'next' to move on."
+              success-message: "We're reading you loud and clear! Click 'next' to move on, or try out the following optional commands."
               failure-message: "It looks like you haven't logged into the container yet. The course validations will not work until you do."
+        - description: |
+            Run `docker --version` to see what version of Docker is running.
+          id: docker-setup-version
+        - description: |
+            Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image.
+          id: docker-setup-version
 additional-labs:
 additional-questions:
 resources:
