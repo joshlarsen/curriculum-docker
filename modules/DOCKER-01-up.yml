@@ -61,14 +61,12 @@ screens:
               success-message: "You ran `ps` correctly. Let's run some containers to make it less empty."
               failure-message: "It looks like you haven't run the command yet. Make sure you're doing it in the learning container!"
         - description: |
-            First, download your new code. Type `git clone https://github.com/wheelhouseio/FoodTrucks.git`, and once that's finished `cd` into the `/FoodTrucks` directory.
+            First, download your new code. Type `git clone https://github.com/wheelhouseio/FoodTrucks.git`, and once that's finished type `cd FoodTrucks` to move into the new /FoodTrucks directory.
           id: docker-up-cd
         - description: |
-            Go ahead and take a peak at the code: you can see it's written in several languages and frameworks—none of which are installed on the learning container.
+            Go ahead and take a peak at the code. It's written in python and Node.js, two server-side languages, and requires ElasticSearch to run its search functionality. None of these languages or tools are installed on the learning container, but we're going to run the code anyway!
 
-            Now we run it anyway! To run the code in a docker container, type `docker-compose up -d` in the code's top-level directory. 
-
-            You'll want to make sure to include the `-d` or you won't be able to use your command line while the containers are running!
+            To start up the app, type `docker-compose up -d` in the code's top-level directory. This is going to read the contents of the `docker-compose.yml` file, and set up containers with the right tools installed running the app.
           id: docker-up-compose-up
           verifications:
             - verification-type: compose-up
@@ -79,12 +77,12 @@ screens:
             Run `docker ps` again to see the new containers that are now running.
           id: docker-up-ps-2
         - description: |
-            Go to `localhost:5000` **in your browser** to see the application running.
+            Go to `localhost:5000` **in your browser** to see the application running. Go ahead and search for your favorite kind of food!
 
             (Sometimes this takes a few seconds to work. Check `docker ps` again if it takes longer than a minute. Are both containers still running? If not, try running the next step, then `docker-compose up -d` again.)
           id: docker-up-browser
         - description: |
-            You can free up resources on your machine by spinning down the images used to run the code. Run `docker-compose down` to spin them down gracefully.
+            Once you're done testing your app, you can free up resources on your machine by spinning down the images used to run the code. Run `docker-compose down` to spin them down gracefully.
           id: docker-up-compose-down
           verifications:
             - verification-type: compose-down

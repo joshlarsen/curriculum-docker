@@ -18,53 +18,53 @@ screens:
 
         The Dockerfile is a plaintext file that defines a Docker image, which once built can then be run in a Docker conatiner on any computer.
 
-        So to Dockerize an app, first you have to write the Dockerfile for that app. The Dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what commands should be run at start-up.
+        So to Dockerize an app, first you have to write the Dockerfile for that app. The Dockerfile contains all the information that Docker needs to know to run the app: where the code is contained on your local computer, what OS it runs on, what dependancies it has, and what instructions should be run at start-up.
 
         Once you write the Dockerfile, you run `docker build` on that file, and the Docker daemon takes the information from the Dockerfile and creates an image from it. This Docker image is a binary file containing the OS and program data that can be transfered to any computer, and run on that computer using Docker inside a container.
 
         It's easy to confuse images and containers, because an image always runs in one container, and one container can only run a single image. Think of the image as the data necessary to run a container.
   - image-slide:
-      title: "Writing a Dockerfile"
+      title: "Writing a Dockerfile: Part 1"
       image: blank.png
       presenter-script: |
-        A Dockerfile is a plaintext file named simply `Dockerfile`—there's no extension. 
+        A Dockerfile is a plaintext file named simply `Dockerfile`—there is no extension.
 
-        Inside the file is a series of comments and commands, in this format:
+        Inside the file is a series of comments and instructions, in this format:
 
             # comment
-            COMMAND arguments
+            INSTRUCTION arguments
 
-        While the file is not case-sensative, it's recommended to write all commands in ALL CAPS to make the file easier to read.
+        While the file is not case-sensative, it's recommended to write all instructions in ALL CAPS to make the file easier to read.
 
-        The commands are interpreted by the Docker Daemon when you call `docker build`, and are executed in order to set up the Image.
+        The instructions are interpreted by the Docker Daemon when you call `docker build`, and are executed in order to set up the Image.
 
-        ### The FROM Command
+        ### The FROM Instruction
 
-        The Dockerfile must start with the `FROM` command. Images are created in layers, which means you can use an Image as the base image for your own. The `FROM` command defines what your base layer will be. As arguments, it takes the name of the image. This name can be extended with the Docker Hub Username of the maintainer of the image, and the version of the image, in the format `username/imagename:version`. For instance:
+        The Dockerfile must start with the `FROM` instruction, and can only have one `FROM` instruction. Images are created in layers, which means you can use an Image as the base image for your own. The `FROM` instruction defines what your base layer will be. As arguments, it takes the name of the image. This name can be extended with the Docker Hub Username of the maintainer of the image, and the version of the image, in the format `username/imagename:version`. For instance:
 
             FROM python:3.5
 
-        This command will build an image from the 3.5 version of the official Python image.
+        This instruction will build an image from the 3.5 version of the official Python image.
 
             FROM prakhar1989/catnip
 
-        This command takes the most recent version of the Image `catnip` from the user `prakhar1989`.
+        This instruction takes the most recent version of the Image `catnip` from the user `prakhar1989`.
 
-        ### The RUN Command
+        ### The RUN Instruction
 
-        Perhaps the most common command is the `RUN` command. `RUN` is used to build up the Image you're creating. For each `RUN` command, Docker will run the command then create a new layer of the image. This way you can roll back your image to previous states easily.
+        Perhaps the most common instruction is the `RUN` instruction. `RUN` is used to build up the Image you're creating. For each `RUN` instruction, Docker will run the instruction then create a new layer of the image. This way you can roll back your image to previous states easily.
 
-        The `RUN` command is largely used to install necessary components onto your new Image. So you'll see a lot of `apt-get` commands.
+        The `RUN` instruction is largely used to install necessary components onto your new Image. So you'll see a lot of `apt-get` instructions.
 
-        The syntax for a `RUN` instruction is to place the full text of the shell command after the `RUN`:
+        The syntax for a `RUN` instruction is to place the full text of the shell instruction after the `RUN`:
 
             RUN apt-get install -y curl
 
             RUN mkdir /user/local/foo
 
-        This will create an Image with curl installed, then use that Image to create an image and create a new image from it with a /user/local/foo folder.
+        This will create an Image with curl installed, then use that Image as the base to create a new Image with a /user/local/foo folder.
 
-        This will automatically run in the `/bin/sh` shell. If you'd like to define a different shell, then the syntax is:
+        RUN instructions will by default run in the `/bin/sh` shell. If you'd like to define a different shell, then the syntax is:
 
             RUN /bin/bash -c 'mkdir /user/local/foo'
   - quiz:
@@ -72,7 +72,7 @@ screens:
       id: DOCKER-01-quiz-01
       presenter-script: placeholder
       questions:
-        - title: "How would you use the FROM command to build an image based on the official Python 3.5 image?"
+        - title: "How would you use the FROM instruction to build an image based on the official Python 3.5 image?"
           id: DOCKER-01-q1
           type: open-response
           options:
@@ -82,11 +82,15 @@ screens:
               correct: true
             - value: /from python:3.5/
               id: DOCKER-01-q1-a2
-              response: Not quite! The FROM should be in all upper-case.
+              response: Not quite! The FROM should be in all upper-case. `FROM python:3.5`.
+              correct: false
+            - value: /FROM PYTHON:3.5/
+              id: DOCKER-01-q1-a2
+              response: Not quite! Everything but the FROM instruction should be lower-case. `FROM python:3.5`.
               correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q1-a3
-              response: Not quite. Go back and read the section on FROM again if you need some help.
+              response: Not quite. The answer is `FROM python:3.5`. Go back and read the section on FROM again if you need some help.
               correct: false
   - quiz:
       title: "Dockerfile Question 2"
@@ -103,35 +107,35 @@ screens:
               correct: true
             - value: /RUN \/user\/local\/foo/
               id: DOCKER-01-q2-a2
-              response: "Not quite! You need to include the `mkdir` command, like this: `RUN mkdir /user/local/foo`."
+              response: "Not quite! You need to include the `mkdir` instruction, like this: `RUN mkdir /user/local/foo`."
               correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q2-a3
-              response: Not quite. Go back to read about the RUN command if you need some help.
+              response: Not quite. The answer is `RUN mkdir /user/local/foo`. Go back to read about the RUN instruction if you need some help.
               correct: false
   - image-slide:
-      title: "Writing a Dockerfile"
+      title: "Writing a Dockerfile: Part 2"
       image: blank.png
       presenter-script: |
         ### MAINTAINER
 
-        A command that takes a name and email of the person who maintains the Image.
+        A instruction that takes a name and email of the person who maintains the Image. It does not take a DockerID. Make sure to put the email in brackets.
 
             MAINTAINER Adrian M Ryan <adrian.ryan@docker.com>
 
         ### EXPOSE
 
-        The `EXPOSE` command opens ports in your Image so that it can speak to the outside world. The following tells the Image to listen at port 4000:
+        The `EXPOSE` instruction opens ports in your Image so that it can speak to the outside world. The following tells the Image to listen at port 4000:
 
             EXPOSE 4000
 
         ### ADD
 
-        Adds files and directories from the current directory into the container. 
+        Adds files and directories from the local directory into the Image. 
 
             ADD /junk /usr/junk
 
-        If there is an /junk directory inside the directory with the Dockerfile in it, this will add all the files and folders from that directory into the /usr/junk folder in the new container.
+        If there is an /junk directory inside the directory with the Dockerfile in it, this will add all the files and folders from that directory into the /usr/junk directory in the new container.
   - quiz:
       title: "Dockerfile Question 3"
       id: DOCKER-01-quiz-03
@@ -141,17 +145,13 @@ screens:
           id: DOCKER-01-q3
           type: open-response
           options:
-            - value: /MAINTAINER Adrian Ryan <adrian.ryan@docker.com>/
+            - value: /MAINTAINER Adrian (M )*Ryan <adrian.ryan@docker.com>/
               id: DOCKER-01-q3-a1
               response: Correct!
               correct: true
-            - value: /MAINTAINER Adrian M Ryan <adrian.ryan@docker.com>/
-              id: DOCKER-01-q3-a2
-              response: "Caught you copy-pasting answers! We didn't ask for the middle initial this time. Try typing out the answers fully, it will help you remember them in the future."
-              correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q3-a3
-              response: Not quite. It's "MAINTAINER Adrian Ryan <adrian.ryan@docker.com>". Go back to read about the MAINTAINER command if you need some help.
+              response: Not quite. It's `MAINTAINER Adrian Ryan <adrian.ryan@docker.com>`. Go back to read about the MAINTAINER instruction if you need some help.
               correct: false
   - quiz:
       title: "Dockerfile Question 4"
@@ -168,7 +168,7 @@ screens:
               correct: true
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q4-a2
-              response: Not quite. It's "EXPOSE 3080". Go back to read about the EXPOSE command if you need some help.
+              response: Not quite. It's `EXPOSE 3080`. Go back to read about the EXPOSE instruction if you need some help.
               correct: false
   - quiz:
       title: "Dockerfile Question 5"
@@ -185,41 +185,45 @@ screens:
               correct: true
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q5-a2
-              response: Not quite. The answer is "ADD /code /bin/code". Go back to read about the ADD command if you need some help understanding why.
+              response: Not quite. The answer is `ADD /code /bin/code`. Go back to read about the ADD instruction if you need some help understanding why.
               correct: false
   - image-slide:
-      title: "Writing a Dockerfile"
+      title: "Writing a Dockerfile: Part 3"
       image: blank.png
       presenter-script: |
         ### WORKDIR
 
-        This sets the directory that all the following RUN, CMD, ADD, and other commands will run in.
+        This sets the directory that all the following RUN, CMD, ADD, and other instructions will run in.
 
             WORKDIR /usr/junk
 
         ### CMD
 
-        The final really important command is `CMD`. 
+        The final really important instruction is `CMD`. 
 
-        `CMD` defines the commands that will run on the Image at start-up. Unlike a `RUN`, this does not create a new layer for the Image, but simply runs the command.
+        `CMD` defines the command that will run on the Image at start-up. Unlike a `RUN`, this does not create a new layer for the Image, but simply runs the command when a container based on that image starts up.
 
-        There can only be one `CMD` per a Dockerfile/Image. If you need to run multiple commands, the best way to do that is to have the `CMD` run a script.
+        **There can only be one `CMD` per a Dockerfile**. If you need to run multiple commands, the best way to do that is to have the `CMD` run a script file, which you can ADD to the Image.
 
-        `CMD` requires that you tell it where to run the command, unlike `RUN`. So example `CMD` commands would be:
+        `CMD` requires that you tell it where to run the commands, unlike `RUN`. So example `CMD` instructions would be:
 
             CMD ["python", "./app.py"]
 
+        or
+
             CMD ["/bin/bash", "echo", "Hello World"]
+
+        The first would tell python to run the app.py program in the current folder. The second tells /bin/bash to run the the "echo" command with the argument "Hello World".
 
         ### Comments
 
-        If a line begins with a `#`, then all the following text on that line will be ignored by the build command. This is a handy way to document what the purpose of your Dockerfile commands are so that you can more easily troubleshoot later.
+        If a line begins with a `#`, then all the following text on that line will be ignored by the build instruction. This is a handy way to document what the purpose of your Dockerfile instructions are so that you can more easily troubleshoot later.
   - quiz:
       title: "Dockerfile Question 6"
       id: DOCKER-01-quiz-06
       presenter-script: placeholder
       questions:
-        - title: "Tell the Dockerfile to run all the following RUN, CMD, and other commands in the /bin/code directory."
+        - title: "Tell the Dockerfile to run all the following RUN, CMD, and other instructions in the /bin/code directory."
           id: DOCKER-01-q6
           type: open-response
           options:
@@ -229,14 +233,14 @@ screens:
               correct: true
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q6-a3
-              response: Not quite. It's "WORKDIR /bin/code". Go back to read about the WORKDIR command if you need some help.
+              response: Not quite. It's `WORKDIR /bin/code`. Go back to read about the WORKDIR instruction if you need some help.
               correct: false
   - quiz:
       title: "Dockerfile Question 7"
       id: DOCKER-01-quiz-07
       presenter-script: placeholder
       questions:
-        - title: "Tell python to run the `app.py` program in `/bin/code`, remembering that you already set the working directory."
+        - title: "Tell python to run the `app.py` program in `/bin/code`, remembering that you already set the working directory in the last question."
           id: DOCKER-01-q7
           type: open-response
           options:
@@ -246,53 +250,53 @@ screens:
               correct: true
             - value: /CMD \["python", "\/bin\/code\/app.py"\]/
               id: DOCKER-01-q7-a1
-              response: Not quite. We already set the WORKDIR to /bin/code, so you just need to tell python to run in the current folder using "./app.py".
+              response: Not quite. We already set the WORKDIR to /bin/code, so you just need to tell python to run in the current folder using "./app.py". The correct instruction is `CMD ["python", "./app.py"]`.
               correct: false
             - value: /CMD \["python", "app.py"\]/
               id: DOCKER-01-q7-a1
-              response: Not quite. You need to tell python to run in the current folder using "./app.py".
+              response: Not quite. You need to tell python to run in the current folder using "./app.py". The full instruction is `CMD ["python", "./app.py"]`.
               correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q7-a2
-              response: Not quite. It's "CMD ["python", "./app.py"]". Go back and read over the CMD command if you need help understanding why.
+              response: Not quite. It's `CMD ["python", "./app.py"]`. Go back and read over the CMD instruction if you need help understanding why.
               correct: false
   - image-slide:
       title: "More Info on Dockerfiles"
       image: blank.png
       presenter-script: |
-        For a full listing of the proper Dockerfile commands and more about the commands we've taught you, check out the <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">the Dockerfile reference</a> in the Docker docs.
+        For a full listing of the proper Dockerfile instructions and more about the instructions we've taught you, check out the <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">the Dockerfile reference</a> in the Docker docs. No need to read this all now, but it might be useful as reference when you're writing a Dockerfile in the next lab.
   - lab:
-      title: Writing a Dockerfile
+      title: "Writing a Dockerfile: Lab"
       id: docker-image
       presenter-script: placeholder
       introduction: |
         We're going to use the same code as the last project, but this time write the Dockerfile and docker-compose.yml files ourselves. 
       steps:
         - description: |
-            First, let's remove the Dockerfile and docker-compose.yml files. We've already set up a branch for you without these files, so just type `git checkout undockerized` into the terminal. If at any point you want to see the files again as a reference, `git checkout master` will bring them back. 
+            First, let's remove the `Dockerfile` and `docker-compose.yml` files. We've already set up a branch for you without these files, so just type `git checkout undockerized` into the terminal. Run the `ls` command to make sure that the FoodTrucks directory no longer contains either file.
           id: docker-image-branching
         - description: |
-            Now it's time to write the Dockerfile. Create a text file called simply `Dockerfile` in the top-level directory of your codebase (you can do this by typing `touch Dockerfile` in the terminal).
+            Now it's time to write the Dockerfile. Create a text file called simply `Dockerfile` in the top-level directory of your codebase. Do this by typing `touch Dockerfile` in the terminal. The `touch` command creates an empty file.
           id: docker-image-dockerfile-create
         - description: |
-            Open the Dockerfile in a text editor. We recommend nano. `nano Dockerfile` in the terminal. 
+            Open the Dockerfile in a text editor. We've installed a text editor called "nano" for you. Type `nano Dockerfile` in the terminal to open it. 
 
-            You'll start by adding the `FROM` command line. It should look like this:
+            You'll start by adding the `FROM` instruction line, using Ubuntu 14.04 as the base image. It should look like this:
             
                 FROM ubuntu:14.04
           id: docker-image-dockerfile-from
         - description: |
-            Now, on each new line you'll want to write a command that completes one of the following bullet points, in this order. Remember, if you get stuck on any of them you can check the answer by going to the master branch with `git checkout master` and looking at the Dockerfile there.
+            Now, on each new line you'll want to write a instruction that completes one of the following bullet points, in this order. Remember, if you get stuck on any of them you can check the answer by going to the master branch with `git checkout master` and looking at the Dockerfile there.
 
-            \* Add your DockerID as the maintainer
+            \* Add your name and email as the maintainer
 
-            \* Run `apt-get -yqg update`
+            \* Run `apt-get -yqq update`
 
-            \* Using apt-get, install python-pip and python-dev
+            \* Run `apt-get -yqq install python-pip python-dev` to install both python-pip and python-dev
 
             \* Using apt-get, install nodejs and npm
 
-            \* Link nodejs and node with the `ln -s /usr/bin/nodejs /usr/bin/node` command
+            \* Link nodejs and node with the `ln -s /usr/bin/nodejs /usr/bin/node` command, using RUN.
 
             \* Add flaskapp to the directory /opt/flaskapp
 
@@ -306,14 +310,14 @@ screens:
 
             \* Expose port 5000
 
-            \* On start-up, run the command `python ./app.py`
+            \* On start-up, run the instruction `python ./app.py`
 
-          id: docker-image-dockerfile-commands
+          id: docker-image-dockerfile-instructions
         - description: |
-            Once the new Dockerfile is complete and looks just like the one in the master branch, run `docker build -t foodtrucks-web .` in the undockerized branch.
+            Once the new Dockerfile is complete, save the file by typing CTRL+X, then Y. Then, run `docker build -t foodtrucks-web .`. You can watch the Docker Daemon execute each instruction in your Dockerfile.
           id: docker-image-build
         - description: |
-            Run `docker images` to make sure the image has been built.
+            Run `docker images` to make sure the image has been built. If not, make sure you completed each of the instructions in the Dockerfile correctly.
           id: docker-image-images
 additional-labs:
 additional-questions:

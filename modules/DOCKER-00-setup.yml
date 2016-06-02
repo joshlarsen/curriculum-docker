@@ -25,7 +25,7 @@ screens:
             Let's try a few simple Docker commands. Run `docker --version` to see what version of Docker is running. If you get an error, then you probably haven't installed Docker and you should do that above!
           id: docker-setup-version
         - description: |
-            Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image. If you get an error telling you the Deamon isn't working, then Docker isn't running, and you need to start the Docker for Mac application.
+            Run `docker run hello-world`. Read the text that it outputs to learn how Docker runs an image, but don't run any more commands. If you get an error telling you the Deamon isn't working, then Docker isn't running, and you need to start the Docker for Mac application.
           id: docker-setup-hello-world
         - description: |
             We're going to do most of the work in this course inside a container that will act as your dev environment.
