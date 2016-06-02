@@ -29,6 +29,8 @@ screens:
       presenter-script: |
         A Dockerfile is a plaintext file named simply `Dockerfile`—there is no extension.
 
+        There is a Dockerfile in the FoodTrucks directory from the last lab. Execute the `cat Dockerfile` command to see its contents.
+
         Inside the file is a series of comments and instructions, in this format:
 
             # comment
@@ -76,15 +78,15 @@ screens:
           id: DOCKER-01-q1
           type: open-response
           options:
-            - value: /FROM python:3.5/
+            - value: /FROM\s+python:3.5/
               id: DOCKER-01-q1-a1
               response: Correct!
               correct: true
-            - value: /from python:3.5/
+            - value: /from\s+python:3.5/
               id: DOCKER-01-q1-a2
               response: Not quite! The FROM should be in all upper-case. `FROM python:3.5`.
               correct: false
-            - value: /FROM PYTHON:3.5/
+            - value: /FROM\s+P(YTHON|ython):3.5/
               id: DOCKER-01-q1-a2
               response: Not quite! Everything but the FROM instruction should be lower-case. `FROM python:3.5`.
               correct: false
@@ -101,11 +103,11 @@ screens:
           id: DOCKER-01-q2
           type: open-response
           options:
-            - value: /RUN mkdir \/user\/local\/foo/
+            - value: /RUN\s+mkdir\s+\/user\/local\/foo/
               id: DOCKER-01-q2-a1
               response: Correct!
               correct: true
-            - value: /RUN \/user\/local\/foo/
+            - value: /RUN\s+\/user\/local\/foo/
               id: DOCKER-01-q2-a2
               response: "Not quite! You need to include the `mkdir` instruction, like this: `RUN mkdir /user/local/foo`."
               correct: false
@@ -145,7 +147,7 @@ screens:
           id: DOCKER-01-q3
           type: open-response
           options:
-            - value: /MAINTAINER Adrian (M )*Ryan <adrian.ryan@docker.com>/
+            - value: /MAINTAINER\s+Adrian\s+(M\s+){0,1}Ryan\s+<adrian.ryan@docker.com>/
               id: DOCKER-01-q3-a1
               response: Correct!
               correct: true
@@ -162,7 +164,7 @@ screens:
           id: DOCKER-01-q4
           type: open-response
           options:
-            - value: /EXPOSE 3080/
+            - value: /EXPOSE\s+3080/
               id: DOCKER-01-q4-a1
               response: Correct!
               correct: true
@@ -179,7 +181,7 @@ screens:
           id: DOCKER-01-q5
           type: open-response
           options:
-            - value: /ADD \/code \/bin\/code/
+            - value: /ADD\s+\/code\s+\/bin\/code/
               id: DOCKER-01-q5-a1
               response: Correct!
               correct: true
@@ -227,7 +229,7 @@ screens:
           id: DOCKER-01-q6
           type: open-response
           options:
-            - value: /WORKDIR \/bin\/code/
+            - value: /WORKDIR\s+\/bin\/code/
               id: DOCKER-01-q6-a1
               response: Correct!
               correct: true
@@ -244,15 +246,15 @@ screens:
           id: DOCKER-01-q7
           type: open-response
           options:
-            - value: /CMD \["python", ".\/app.py"\]/
+            - value: /CMD\s+\["python",\s+".\/app.py"\]/
               id: DOCKER-01-q7-a1
               response: Correct!
               correct: true
-            - value: /CMD \["python", "\/bin\/code\/app.py"\]/
+            - value: /CMD\s+\["python",\s+"\/bin\/code\/app.py"\]/
               id: DOCKER-01-q7-a1
               response: Not quite. We already set the WORKDIR to /bin/code, so you just need to tell python to run in the current folder using "./app.py". The correct instruction is `CMD ["python", "./app.py"]`.
               correct: false
-            - value: /CMD \["python", "app.py"\]/
+            - value: /CMD\s+\["python",\s+"app.py"\]/
               id: DOCKER-01-q7-a1
               response: Not quite. You need to tell python to run in the current folder using "./app.py". The full instruction is `CMD ["python", "./app.py"]`.
               correct: false

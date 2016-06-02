@@ -3,15 +3,17 @@ pre-requisites: placeholder
 learning-objective: placeholder
 screens:
   - lab:
-      title: Running a Docker Project
+      title: Setting Up for the Course
       id: docker-setup
       presenter-script: placeholder
       introduction: |
-        In this course, you'll learn the basics of using Docker on a day-to-day basis, as well as how to set up your own project to use Docker (aka, how to "dockerize" it).
+        In this course, you'll learn the basics of using Docker day-to-day, as well as how to set up your own project to use Docker (aka, how to "dockerize" it).
 
         You'll do this by working on a real web app inside a Docker container. We'll watch you do the work, and give you feedback when you've made mistakes and let you know when you've finished a task and it's safe to move on.
 
         The course is broken into two parts. In the first, you'll learn about why Docker is so powerful, and what the process for using it day to day in your development routine should be. In the second part, we'll walk you through the steps of dockerizing an app and ensuring you can get it up and running on any computer in just a few minutes.
+
+        You'll do the work in the course on your computer, in a special Learning Container. This container will act as your dev environment, and will help us give you real-time feedback on your work.
 
         Before we start, we need to make sure you have Docker installed properly. Walk through the steps below, and once the last step has turend green you're ready to hit "next" and move on to the first part of the course.
       steps:
@@ -19,7 +21,7 @@ screens:
             Download and install <a href="https://blog.docker.com/2016/03/docker-for-mac-windows-beta/" target="_blank">Docker for Mac</a> if you haven't already. Make sure it's running.
           id: docker-setup-install
         - description: |
-            Open the terminal. `CMD-space` then typing `terminal` should bring it up. If you've never used the terminal before, this course might be a bit advanced for you. 
+            Open the terminal. `CMD-space` then typing `terminal` should bring it up. We'll be using the terminal a lot in this course, but we'll make sure you always have the commands you need. 
           id: docker-setup-terminal
         - description: |
             Let's try a few simple Docker commands. Run `docker --version` to see what version of Docker is running. If you get an error, then you probably haven't installed Docker and you should do that above!
