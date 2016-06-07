@@ -84,11 +84,11 @@ screens:
               correct: true
             - value: /from\s+python:3.5/
               id: DOCKER-01-q1-a2
-              response: Not quite! The FROM should be in all upper-case. `FROM python:3.5`.
+              response: Not quite! "FROM" should be in all upper-case. `FROM python:3.5`.
               correct: false
             - value: /FROM\s+P(YTHON|ython):3.5/
               id: DOCKER-01-q1-a2
-              response: Not quite! Everything but the FROM instruction should be lower-case. `FROM python:3.5`.
+              response: Not quite! Everything but the keyword FROM should be lower-case. `FROM python:3.5`.
               correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q1-a3
@@ -109,7 +109,7 @@ screens:
               correct: true
             - value: /RUN\s+\/user\/local\/foo/
               id: DOCKER-01-q2-a2
-              response: "Not quite! You need to include the `mkdir` instruction, like this: `RUN mkdir /user/local/foo`."
+              response: "Not quite! You need to include the `mkdir` command, like this: `RUN mkdir /user/local/foo`."
               correct: false
             - value: # Null means it matches anything else - please make this the last option
               id: DOCKER-01-q2-a3
@@ -147,7 +147,7 @@ screens:
           id: DOCKER-01-q3
           type: open-response
           options:
-            - value: /MAINTAINER\s+Adrian\s+(M\s+){0,1}Ryan\s+<adrian.ryan@docker.com>/
+            - value: /MAINTAINER\s+Adrian\s+(M\.{0,1}\s+){0,1}Ryan\s+<adrian.ryan@docker.com>/
               id: DOCKER-01-q3-a1
               response: Correct!
               correct: true
